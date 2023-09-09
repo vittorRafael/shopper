@@ -1,5 +1,5 @@
 // eslint-disable-next-line react/prop-types
-const Table = ({ products }) => {
+const Table = ({ products, columns }) => {
   return (
     <div>
       <div className="relative overflow-x-auto">
@@ -15,12 +15,16 @@ const Table = ({ products }) => {
               <th scope="col" className="px-6 py-3">
                 Preço Atual
               </th>
-              <th scope="col" className="px-6 py-3">
-                Novo Preço
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Mensagem
-              </th>
+              {columns && (
+                <th scope="col" className="px-6 py-3">
+                  Novo Preço
+                </th>
+              )}
+              {columns && (
+                <th scope="col" className="px-6 py-3">
+                  Mensagem
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -38,9 +42,13 @@ const Table = ({ products }) => {
                     {item.code}
                   </th>
                   <td className="px-6 py-4">{item.name}</td>
-                  <td className="px-6 py-4">{item.sales_price}</td>
-                  <td className="px-6 py-4">{item.new_price}</td>
-                  <td className={`px-6 py-4 ${item.msgColor}`}>{item.msg}</td>
+                  <td className="px-6 py-4">{`R$ ${item.sales_price}`}</td>
+                  {columns && (
+                    <td className="px-6 py-4">{`R$ ${item.new_price}`}</td>
+                  )}
+                  {columns && (
+                    <td className={`px-6 py-4 ${item.msgColor}`}>{item.msg}</td>
+                  )}
                 </tr>
               ))}
           </tbody>

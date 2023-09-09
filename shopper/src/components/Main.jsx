@@ -147,7 +147,7 @@ const Main = () => {
         ))}
       {
         <section className="flex justify-center items-center p-10">
-          {showTable && <Table products={products} />}
+          {showTable && <Table products={products} columns={true} />}
           {!showTable && err.length === 0 && (
             <h1 className="mx-auto font-bold text-lg w-fit">
               Adicione um arquivo .csv para listar os produtos
